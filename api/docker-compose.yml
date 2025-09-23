@@ -1,0 +1,16 @@
+services:
+  database:
+    container_name: miniwebshop_postgres_container
+    image: postgres:17
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: dbpass
+      POSTGRES_DB: miniwebshop
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

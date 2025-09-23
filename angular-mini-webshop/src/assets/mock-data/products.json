@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "Gaming Mouse",
+        "description": "High precision RGB mouse",
+        "price": 4999,
+        "currency": "USD",
+        "imageUrl": "/assets/images/mouse.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Keyboard",
+        "description": "Mechanical",
+        "price": 89.99,
+        "currency": "USD",
+        "imageUrl": "/assets/images/keyboard.jpg"
+    }
+]

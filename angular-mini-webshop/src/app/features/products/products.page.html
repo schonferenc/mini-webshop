@@ -1,0 +1,41 @@
+<h1>Our Products</h1>
+
+<div class="products-grid">
+  @for (product of products(); track product.id) {
+  <div class="product-card">
+    <img
+      [src]="product.imageUrl || '/assets/images/no-image.jpg'"
+      [alt]="product.name"
+      class="product-image"
+    />
+    <div class="product-info">
+      <h2>{{ product.name }}</h2>
+      <p class="price">${{ product.price | number:'1.2-2' }}</p>
+      <p class="description">{{ product.description || 'No description available' }}</p>
+      <div class="product-footer">
+        <span class="stock" [class.low-stock]="product.stock < 10">
+          Stock: {{ product.stock }}
+        </span>
+        <button
+          (click)="goToProduct(product)"
+          class="btn-primary"
+          [disabled]="product.stock === 0"
+        >
+          {{ product.stock === 0 ? 'Out of Stock' : 'View Details' }}
+        </button>
+      </div>
+    </div>
+  </div>
+  } @empty {
+    @if (isLoading()) {
+      <div class="loading">Loading products...</div>
+    } @else if (error()) {
+      <div class="error">
+        <p>{{ error() }}</p>
+        <button (click)="retry()" class="btn-primary">Try Again</button>
+      </div>
+    } @else {
+      <div class="no-products">No products available</div>
+    }
+  }
+</div>
