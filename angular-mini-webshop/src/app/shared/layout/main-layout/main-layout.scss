@@ -1,0 +1,33 @@
+@use '../../../../styles/abstracts' as *;
+
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: $space-4;
+  background: $color-black;
+  color: $color-white;
+  padding: $space-2 $space-4;
+  text-decoration: none;
+  border-radius: $border-radius;
+  z-index: 1000;
+  transition: top 0.3s;
+
+  &:focus-visible {
+    top: $space-4;
+  }
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+
+  &:focus-visible {
+    outline: none;
+  }
+}

@@ -1,41 +1,169 @@
-<h1>Our Products</h1>
-
-<div class="products-grid">
-  @for (product of products(); track product.id) {
-  <div class="product-card">
-    <img
-      [src]="product.imageUrl || '/assets/images/no-image.jpg'"
-      [alt]="product.name"
-      class="product-image"
-    />
-    <div class="product-info">
-      <h2>{{ product.name }}</h2>
-      <p class="price">${{ product.price | number:'1.2-2' }}</p>
-      <p class="description">{{ product.description || 'No description available' }}</p>
-      <div class="product-footer">
-        <span class="stock" [class.low-stock]="product.stock < 10">
-          Stock: {{ product.stock }}
-        </span>
-        <button
-          (click)="goToProduct(product)"
-          class="btn-primary"
-          [disabled]="product.stock === 0"
-        >
-          {{ product.stock === 0 ? 'Out of Stock' : 'View Details' }}
-        </button>
+<div class="products-page">
+  <div class="container">
+    <div class="products-header">
+      <div class="breadcrumb">
+        <span>Home</span>
+        <span>/</span>
+        <span>Products</span>
       </div>
+      <h1 class="page-title">PRODUCTS</h1>
+    </div>
+
+    <div class="products-content">
+      <aside class="filters-sidebar">
+        <h3>Filters</h3>
+
+        <div class="filter-group">
+          <h4>Size</h4>
+          <div class="size-filters">
+            <label class="size-option">
+              <input type="checkbox" value="XS">
+              <span>XS</span>
+            </label>
+            <label class="size-option">
+              <input type="checkbox" value="S">
+              <span>S</span>
+            </label>
+            <label class="size-option">
+              <input type="checkbox" value="M">
+              <span>M</span>
+            </label>
+            <label class="size-option">
+              <input type="checkbox" value="L">
+              <span>L</span>
+            </label>
+            <label class="size-option">
+              <input type="checkbox" value="XL">
+              <span>XL</span>
+            </label>
+            <label class="size-option">
+              <input type="checkbox" value="2XL">
+              <span>2XL</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Availability</h4>
+          <label class="checkbox-option">
+            <input type="checkbox">
+            <span>Out of Stock (16)</span>
+          </label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Category</h4>
+          <label class="checkbox-option">
+            <input type="checkbox">
+            <span>SHORTS</span>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox">
+            <span>JACKETS</span>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox">
+            <span>COLLECTIONS</span>
+          </label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Colors</h4>
+          <div class="color-options">
+            <span class="color-dot" style="background-color: #000"></span>
+            <span class="color-dot" style="background-color: #fff; border: 1px solid #ccc"></span>
+            <span class="color-dot" style="background-color: #8B4513"></span>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Price Range</h4>
+          <div class="price-range">
+            <input type="range" min="0" max="1000" value="500">
+            <div class="price-labels">
+              <span>$0</span>
+              <span>$1000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Tags</h4>
+          <label class="checkbox-option">
+            <input type="checkbox">
+            <span>NEW</span>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox">
+            <span>SALE</span>
+          </label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Ratings</h4>
+          <div class="rating-options">
+            <span>⭐⭐⭐⭐⭐ & Up</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="products-main">
+        <div class="products-toolbar">
+          <div class="sort-options">
+            <label>Sort by:</label>
+            <select>
+              <option>BEST</option>
+              <option>FEATURED</option>
+              <option>PRICE: LOW TO HIGH</option>
+              <option>PRICE: HIGH TO LOW</option>
+              <option>NEWEST</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid">
+          @for (product of products(); track product.id) {
+          <div class="product-card">
+            <div class="product-image-container">
+              <img
+                [src]="product.imageUrl || '/assets/images/no-image.jpg'"
+                [alt]="product.name"
+                class="product-image"
+              />
+              <div class="product-actions">
+                <button class="quick-view-btn" aria-label="Quick view">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <span class="product-category">{{ product.category || 'Cotton T Shirt' }}</span>
+              <h3 class="product-title">{{ product.name }}</h3>
+              <div class="product-price">${{ product.price | number:'1.0-0' }}</div>
+            </div>
+          </div>
+          } @empty {
+            @if (isLoading()) {
+              <div class="loading">Loading products...</div>
+            } @else if (error()) {
+              <div class="error">
+                <p>{{ error() }}</p>
+                <button (click)="retry()" class="btn btn--primary">Try Again</button>
+              </div>
+            } @else {
+              <div class="no-products">No products available</div>
+            }
+          }
+        </div>
+      </main>
     </div>
   </div>
-  } @empty {
-    @if (isLoading()) {
-      <div class="loading">Loading products...</div>
-    } @else if (error()) {
-      <div class="error">
-        <p>{{ error() }}</p>
-        <button (click)="retry()" class="btn-primary">Try Again</button>
-      </div>
-    } @else {
-      <div class="no-products">No products available</div>
-    }
-  }
 </div>

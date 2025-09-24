@@ -1,0 +1,39 @@
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-title">Mini Webshop</h3>
+        <p class="footer-text">Your trusted online shopping destination.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-title">Quick Links</h3>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-links">
+            @for (link of quickLinks; track link.path) {
+              <li>
+                <a [routerLink]="link.path">{{ link.label }}</a>
+              </li>
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-title">Contact Info</h3>
+        <address class="footer-address">
+          <p>
+            <a href="mailto:info@miniwebshop.com">info@miniwebshop.com</a>
+          </p>
+          <p>
+            <a href="tel:+1234567890">+1 234 567 890</a>
+          </p>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear }} Mini Webshop. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
