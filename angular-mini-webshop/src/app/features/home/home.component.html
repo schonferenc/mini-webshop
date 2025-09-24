@@ -1,0 +1,59 @@
+<div class="home-page">
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Mini Webshop</h1>
+        <p class="hero-subtitle">Discover quality products at great prices</p>
+        <a routerLink="/products" class="btn btn--primary hero-cta">
+          Shop Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="material-symbols-outlined size-32">inventory_2</span>
+          <h3>Quality Products</h3>
+          <p>Curated selection</p>
+        </div>
+        <div class="stat-item">
+          <span class="material-symbols-outlined size-32">local_shipping</span>
+          <h3>Fast Delivery</h3>
+          <p>Free shipping over $50</p>
+        </div>
+        <div class="stat-item">
+          <span class="material-symbols-outlined size-32">verified_user</span>
+          <h3>Secure Payment</h3>
+          <p>100% safe checkout</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  @if (featuredProducts().length > 0) {
+  <section class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="featured-grid">
+        @for (product of featuredProducts(); track product.id) {
+          <div class="product-card" (click)="viewProduct(product.id)">
+            <div class="product-image">
+              <img [src]="product.imageUrl || '/assets/placeholder-product.jpg'" [alt]="product.name">
+            </div>
+            <div class="product-info">
+              <h3>{{ product.name }}</h3>
+              <p class="price">${{ product.price }}</p>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="featured-cta">
+        <a routerLink="/products" class="btn btn--secondary">View All Products</a>
+      </div>
+    </div>
+  </section>
+  }
+</div>

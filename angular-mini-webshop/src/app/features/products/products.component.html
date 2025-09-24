@@ -132,20 +132,15 @@
               />
               <div class="product-actions">
                 <button class="quick-view-btn" aria-label="Quick view">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
+                  <span class="material-symbols-outlined size-20">visibility</span>
                 </button>
                 <button class="wishlist-btn" aria-label="Add to wishlist">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                  </svg>
+                  <span class="material-symbols-outlined size-20">favorite_border</span>
                 </button>
               </div>
             </div>
             <div class="product-info">
-              <span class="product-category">{{ product.category || 'Cotton T Shirt' }}</span>
+              <span class="product-category">Product</span>
               <h3 class="product-title">{{ product.name }}</h3>
               <div class="product-price">${{ product.price | number:'1.0-0' }}</div>
             </div>

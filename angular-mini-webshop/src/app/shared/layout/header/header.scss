@@ -115,7 +115,7 @@
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   padding: $space-2 $space-3;
-  border-radius: $border-radius;
+  border-radius: $radius-base;
   transition: all 0.15s;
 
   &:hover {
@@ -153,7 +153,7 @@
   transition: background-color 0.15s ease;
   position: relative;
 
-  svg {
+  .material-symbols-outlined {
     color: $color-black;
   }
 

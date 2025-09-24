@@ -92,7 +92,7 @@
   justify-content: center;
   height: 40px;
   border: 1px solid $color-border;
-  border-radius: $border-radius;
+  border-radius: $radius-base;
   cursor: pointer;
   transition: all 0.15s ease;
 
@@ -209,7 +209,7 @@
     font-size: $font-size-sm;
     color: $color-black;
     border: 1px solid $color-border;
-    border-radius: $border-radius;
+    border-radius: $radius-base;
     padding: $space-2 $space-3;
     background-color: $color-white;
   }
@@ -229,7 +229,7 @@
 
 .product-card {
   background: $color-white;
-  border-radius: $border-radius;
+  border-radius: $radius-base;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
@@ -281,14 +281,14 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.15s ease;
 
-  svg {
+  .material-symbols-outlined {
     color: $color-black;
   }
 
   &:hover {
     background: $color-black;
 
-    svg {
+    .material-symbols-outlined {
       color: $color-white;
     }
   }

@@ -1,19 +1,21 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './features/home/home.page';
 
 export const routes: Routes = [
-  { path: '', component: HomePage },
+  {
+    path: '',
+    loadComponent: () => import('@features/home').then((m) => m.HomeComponent),
+  },
   {
     path: 'products',
-    loadComponent: () => import('./features/products/products.page').then((m) => m.ProductsPage),
+    loadComponent: () => import('@features/products').then((m) => m.ProductsComponent),
   },
   {
     path: 'product/:id',
-    loadComponent: () => import('./features/product/product.page').then((m) => m.ProductPage),
+    loadComponent: () => import('@features/product').then((m) => m.ProductComponent),
   },
   {
     path: 'cart',
-    loadComponent: () => import('./features/cart/cart.page').then((m) => m.CartPage),
+    loadComponent: () => import('@features/cart').then((m) => m.CartComponent),
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

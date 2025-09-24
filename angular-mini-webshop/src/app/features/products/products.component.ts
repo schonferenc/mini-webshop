@@ -1,22 +1,26 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
-import { ProductService } from '../../core/services/product.service';
-import { Product } from '../../shared/models/product.model';
+import { Router } from '@angular/router';
+
+import { ProductService } from '@core/services/product.service';
+import { Product } from '@shared/models/product.model';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './products.page.html',
-  styleUrls: ['./products.page.scss'],
+  imports: [CommonModule],
+  templateUrl: './products.component.html',
+  styleUrl: './products.component.scss',
 })
-export class ProductsPage {
-  products = signal<Product[]>([]);
-  isLoading = signal(true);
-  error = signal<string | null>(null);
+export class ProductsComponent {
+  private readonly productService = inject(ProductService);
+  private readonly router = inject(Router);
 
-  constructor(private productService: ProductService, private router: Router) {
+  readonly products = signal<Product[]>([]);
+  readonly isLoading = signal(true);
+  readonly error = signal<string | null>(null);
+
+  constructor() {
     this.loadProducts();
   }
 
