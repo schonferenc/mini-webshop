@@ -1,0 +1,28 @@
+@use '../../../../styles/abstracts' as *;
+
+.feature-item {
+  text-align: center;
+  padding: $space-6;
+
+  .material-symbols-outlined {
+    color: $color-black;
+    margin-bottom: $space-4;
+    display: block;
+    font-size: $font-size-3xl;
+  }
+
+  h3 {
+    font-family: $font-family-primary;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $color-black;
+    margin: 0 0 $space-2;
+  }
+
+  p {
+    font-family: $font-family-secondary;
+    font-size: $font-size-base;
+    color: $color-text-secondary;
+    margin: 0;
+  }
+}

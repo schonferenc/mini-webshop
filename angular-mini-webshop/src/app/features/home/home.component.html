@@ -15,21 +15,13 @@
     <div class="container">
       <h2 id="features-heading" class="sr-only">Our Features</h2>
       <div class="grid" role="list">
-        <article class="item" role="listitem">
-          <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
-          <h3>Quality Products</h3>
-          <p>Curated selection</p>
-        </article>
-        <article class="item" role="listitem">
-          <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
-          <h3>Fast Delivery</h3>
-          <p>Free shipping over $50</p>
-        </article>
-        <article class="item" role="listitem">
-          <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
-          <h3>Secure Payment</h3>
-          <p>100% safe checkout</p>
-        </article>
+        @for (feature of features(); track feature.title) {
+        <app-feature-item
+          [icon]="feature.icon"
+          [title]="feature.title"
+          [description]="feature.description"
+        />
+        }
       </div>
     </div>
   </section>

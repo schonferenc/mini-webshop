@@ -20,3 +20,9 @@ export interface ErrorInfo {
   code?: string;
   details?: unknown;
 }
+
+export interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
