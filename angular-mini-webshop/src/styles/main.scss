@@ -1,5 +1,18 @@
 // Main stylesheet - Global styles only
+// Architecture: SMACSS-inspired with ITCSS principles
+
+// 1. Settings & Tools
+@use 'abstracts/tokens'; // CSS custom properties first
+
+// 2. Base styles
 @use 'base/reset';
+
+// 3. Layout
 @use 'layout/container';
+
+// 4. Components (global only)
 @use 'components/buttons';
 @use 'components/material-icons';
+
+// 5. Utilities (last to override everything)
+@use 'utilities';

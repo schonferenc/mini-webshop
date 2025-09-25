@@ -13,7 +13,7 @@
   font-weight: $font-weight-medium;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all var(--transition-fast, #{$transition-fast});
 
   &:disabled {
     opacity: 0.5;
@@ -28,10 +28,7 @@
       background-color: $color-gray-800;
     }
 
-    &:focus-visible {
-      outline: 2px solid $color-black;
-      outline-offset: 2px;
-    }
+    @include focus-visible;
   }
 
   &--secondary {

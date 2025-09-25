@@ -1,0 +1,60 @@
+@use 'variables' as *;
+
+// CSS Custom Properties (Design Tokens) for runtime theming
+:root {
+  // Colors
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted: #{$color-text-muted};
+  --color-background-primary: #{$color-background-primary};
+  --color-background-secondary: #{$color-background-secondary};
+  --color-border-light: #{$color-border-light};
+  --color-border-medium: #{$color-border-medium};
+
+  // Interactive colors
+  --color-focus: #{$color-focus};
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-error: #{$color-error};
+
+  // Typography
+  --font-family-primary: #{$font-family-primary};
+  --font-family-secondary: #{$font-family-secondary};
+
+  // Spacing (most commonly used)
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-6: #{$space-6};
+  --space-8: #{$space-8};
+  --space-12: #{$space-12};
+
+  // Border radius
+  --radius-sm: #{$radius-sm};
+  --radius-base: #{$radius-base};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
+
+  // Shadows
+  --shadow-sm: #{$shadow-sm};
+  --shadow-base: #{$shadow-base};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+
+  // Container
+  --container-max-width: #{$container-max-width};
+}
+
+// Theme-aware utility classes using custom properties
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted { color: var(--color-text-muted); }
+.bg-primary { background-color: var(--color-background-primary); }
+.bg-secondary { background-color: var(--color-background-secondary); }
+.border-light { border-color: var(--color-border-light); }
+.border-medium { border-color: var(--color-border-medium); }

@@ -1,3 +1,8 @@
-// Forward all abstracts for easy importing
+// Barrel export for all abstracts
 @forward 'variables';
+@forward 'tokens';
 @forward 'mixins';
+
+// Re-export for use with 'as *' syntax
+@use 'variables' as *;
+@use 'mixins' as *;
