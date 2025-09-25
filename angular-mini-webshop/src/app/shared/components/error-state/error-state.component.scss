@@ -1,0 +1,40 @@
+@use '../../../../styles/abstracts' as *;
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  max-width: 400px;
+  margin: 0 auto;
+
+  &__icon {
+    margin-bottom: var(--space-4);
+
+    .material-symbols-outlined {
+      font-size: 3rem;
+      color: var(--color-error);
+      display: block;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-primary;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-3);
+  }
+
+  &__message {
+    font-size: $font-size-base;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0 0 var(--space-6);
+  }
+
+  &__retry {
+    margin-top: var(--space-2);
+  }
+}

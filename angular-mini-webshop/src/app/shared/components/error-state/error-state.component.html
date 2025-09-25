@@ -1,0 +1,20 @@
+<div class="error-state" role="alert" [attr.aria-describedby]="ariaDescribedBy()">
+  <div class="error-state__icon">
+    <span class="material-symbols-outlined" aria-hidden="true">error_outline</span>
+  </div>
+
+  <div class="error-state__content">
+    <h3 class="error-state__title">{{ title() }}</h3>
+    <p class="error-state__message" [id]="ariaDescribedBy()">{{ message() }}</p>
+
+    @if (showRetry()) {
+      <button
+        type="button"
+        class="btn btn--secondary error-state__retry"
+        (click)="retry.emit()"
+      >
+        Try Again
+      </button>
+    }
+  </div>
+</div>

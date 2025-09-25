@@ -1,0 +1,27 @@
+<article
+  class="product-card"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'View details for ' + product().name"
+  (click)="productClick.emit(product().id)"
+  (keydown.enter)="productClick.emit(product().id)"
+  (keydown.space)="$event.preventDefault(); productClick.emit(product().id)"
+>
+  <div class="product-card__image-container">
+    <img
+      class="product-card__image"
+      [src]="product().imageUrl || '/assets/images/placeholder-product.jpg'"
+      [alt]="product().name"
+      loading="lazy"
+      width="280"
+      height="200"
+    />
+  </div>
+
+  <div class="product-card__content">
+    <h3 class="product-card__title">{{ product().name }}</h3>
+    <p class="product-card__price" [attr.aria-label]="'Price: ' + product().price + ' dollars'">
+      ${{ product().price }}
+    </p>
+  </div>
+</article>

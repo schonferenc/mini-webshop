@@ -6,11 +6,11 @@
   margin-inline: auto;
   padding-inline: var(--space-4, #{$space-4});
 
-  @include md {
+  @include xs {
     padding-inline: var(--space-6, #{$space-6});
   }
 
-  @include lg {
+  @include sm {
     padding-inline: var(--space-8, #{$space-8});
   }
 }

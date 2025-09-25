@@ -1,59 +1,74 @@
-<div class="home-page">
-  <section class="hero-section">
+<main class="home">
+  <!-- Hero Section -->
+  <section id="hero" class="hero" aria-labelledby="hero-title">
     <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">Mini Webshop</h1>
-        <p class="hero-subtitle">Discover quality products at great prices</p>
-        <a routerLink="/products" class="btn btn--primary hero-cta">
-          Shop Now
-        </a>
-      </div>
+      <header class="content">
+        <h1 id="hero-title" class="title">Mini Webshop</h1>
+        <p class="subtitle">Discover quality products at great prices</p>
+        <a routerLink="/products" class="cta" aria-label="Browse all products">Shop Now</a>
+      </header>
     </div>
   </section>
 
-  <section class="stats-section">
+  <!-- Features Section -->
+  <section id="features" class="stats" aria-labelledby="features-heading">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <span class="material-symbols-outlined size-32">inventory_2</span>
+      <h2 id="features-heading" class="sr-only">Our Features</h2>
+      <div class="grid" role="list">
+        <article class="item" role="listitem">
+          <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
           <h3>Quality Products</h3>
           <p>Curated selection</p>
-        </div>
-        <div class="stat-item">
-          <span class="material-symbols-outlined size-32">local_shipping</span>
+        </article>
+        <article class="item" role="listitem">
+          <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
           <h3>Fast Delivery</h3>
           <p>Free shipping over $50</p>
-        </div>
-        <div class="stat-item">
-          <span class="material-symbols-outlined size-32">verified_user</span>
+        </article>
+        <article class="item" role="listitem">
+          <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
           <h3>Secure Payment</h3>
           <p>100% safe checkout</p>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
+  <!-- Featured Products Section -->
   @if (featuredProducts().length > 0) {
-  <section class="featured-section">
+  <section id="featured" class="featured" aria-labelledby="featured-title">
     <div class="container">
-      <h2 class="section-title">Featured Products</h2>
-      <div class="featured-grid">
+      <h2 id="featured-title" class="title">Featured Products</h2>
+      <div class="grid" role="list">
         @for (product of featuredProducts(); track product.id) {
-          <div class="product-card" (click)="viewProduct(product.id)">
-            <div class="product-image">
-              <img [src]="product.imageUrl || '/assets/placeholder-product.jpg'" [alt]="product.name">
-            </div>
-            <div class="product-info">
-              <h3>{{ product.name }}</h3>
-              <p class="price">${{ product.price }}</p>
-            </div>
+        <article
+          class="card"
+          role="listitem"
+          tabindex="0"
+          (click)="viewProduct(product.id)"
+          (keydown)="handleKeydown($event, product.id)"
+          [attr.aria-label]="'View product: ' + product.name + ', Price: $' + product.price"
+        >
+          <div class="image">
+            <img
+              [src]="product.imageUrl || '/assets/placeholder-product.jpg'"
+              [alt]="'Product image: ' + product.name"
+              loading="lazy"
+            />
           </div>
+          <div class="info">
+            <h3>{{ product.name }}</h3>
+            <p class="price" aria-label="Price: {{ product.price }} dollars">
+              ${{ product.price }}
+            </p>
+          </div>
+        </article>
         }
       </div>
-      <div class="featured-cta">
-        <a routerLink="/products" class="btn btn--secondary">View All Products</a>
+      <div class="cta">
+        <a routerLink="/products" aria-label="Browse all available products">View All Products</a>
       </div>
     </div>
   </section>
   }
-</div>
+</main>

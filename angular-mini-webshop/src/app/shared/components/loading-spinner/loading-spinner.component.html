@@ -1,0 +1,12 @@
+<div
+  class="loading-spinner"
+  [class.loading-spinner--small]="size() === 'small'"
+  [attr.aria-label]="ariaLabel()"
+  role="status"
+>
+  <div class="loading-spinner__circle"></div>
+  @if (message()) {
+    <span class="loading-spinner__message">{{ message() }}</span>
+  }
+  <span class="sr-only">{{ ariaLabel() }}</span>
+</div>

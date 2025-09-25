@@ -8,24 +8,35 @@ import { Product } from '@shared/models';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly productService = inject(ProductService);
 
-  featuredProducts = signal<Product[]>([]);
+  protected readonly featuredProducts = signal<Product[]>([]);
 
   async ngOnInit(): Promise<void> {
+    await this.loadFeaturedProducts();
+  }
+
+  async loadFeaturedProducts(): Promise<void> {
     try {
-      const allProducts = await this.productService.getAll();
-      this.featuredProducts.set(allProducts.slice(0, 3));
+      const products = await this.productService.getAll();
+      this.featuredProducts.set(products.slice(0, 3));
     } catch (error) {
       console.error('Failed to load featured products:', error);
     }
   }
 
-  viewProduct(productId: number): void {
+  protected viewProduct(productId: number): void {
     this.router.navigate(['/product', productId]);
+  }
+
+  protected handleKeydown(event: KeyboardEvent, productId: number): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.viewProduct(productId);
+    }
   }
 }
